@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChroMusic</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <div class="header">
+      <span class="logo">♪ ChroMusic</span>
+      <span class="version" id="version"></span>
+    </div>
+
+    <div class="status-row" id="status-row">
+      <span class="status-dot" id="status-dot"></span>
+      <span class="status-text" id="status-text">Checking…</span>
+    </div>
+
+    <div class="stats" id="stats">
+      <div class="stat">
+        <span class="stat-value" id="stat-blocks">0</span>
+        <span class="stat-label">Detected</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-panel">—</span>
+        <span class="stat-label">Panel</span>
+      </div>
+    </div>
+
+    <button class="action-btn" id="btn-rescan">
+      🔍 Re-scan Page
+    </button>
+
+    <div class="divider"></div>
+
+    <label class="input-label" for="style-input">🎵 Your Musical Style</label>
+    <input type="text" class="style-input" id="style-input"
+           placeholder="e.g. Bebop, Fusion, Bossa Nova…" />
+
+    <button class="action-btn copy-btn" id="btn-copy-prompt">
+      📋 Copy AI Prompt
+    </button>
+    <div class="toast" id="copy-toast">Copied to clipboard!</div>
+
+    <div class="footer">
+      Supports ChatGPT · Claude · Gemini
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

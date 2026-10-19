@@ -1,0 +1,74 @@
+{
+  "manifest_version": 3,
+  "name": "ChroMusic — AI Music Visualizer",
+  "version": "1.0.0",
+  "description": "Visualizes chord voicings, scales, and harmonic structures from AI chat responses on a guitar fretboard and piano keyboard.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "shared/music-theory.js",
+        "shared/guitar-note-map.js",
+        "shared/GuitarVoicingEngine.js",
+        "shared/guitar-vertical-interval-bank.js",
+        "shared/guitar-triad-bank.js",
+        "shared/guitar-seventh-bank.js",
+        "shared/guitar-scale-bank.js",
+        "shared/schema.js",
+        "shared/chord-book-catalog.js",
+        "shared/chord-parser.js",
+        "shared/book-exact-shape-bank.js",
+        "shared/voicing-library.js",
+        "shared/guitar-advanced-bank.js",
+        "shared/voicing-generator.js",
+        "shared/guitar-fingering-engine.js",
+        "shared/book-chord-shape-bank.js",
+        "shared/guitar-validation.js",
+        "shared/notation.js",
+        "node_modules/@coderline/alphatab/dist/alphaTab.js",
+        "content/instrument-renderers.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/*",
+        "node_modules/@coderline/alphatab/dist/font/*",
+        "node_modules/@coderline/alphatab/dist/*.js",
+        "node_modules/@coderline/alphatab/dist/*.mjs"
+      ],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+      ]
+    }
+  ]
+}

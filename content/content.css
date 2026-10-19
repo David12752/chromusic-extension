@@ -1,0 +1,104 @@
+/**
+ * ChroMusic — Content Script Styles
+ * ====================================
+ * Styles for the "Visualize" button injected next to AI code blocks.
+ * The panel itself uses Shadow DOM and has its own encapsulated styles.
+ *
+ * These styles must be defensive — high specificity to avoid
+ * being overridden by the host page's CSS.
+ */
+
+/* ── Visualize Button ── */
+
+button.chromusic-visualize-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin: 8px 4px 4px 0 !important;
+  padding: 6px 14px !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #c4a0e8 !important;
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.15), rgba(52, 152, 219, 0.1)) !important;
+  border: 1px solid rgba(155, 89, 182, 0.35) !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) !important;
+  letter-spacing: 0.3px !important;
+  line-height: 1.4 !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  z-index: 10000 !important;
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  float: none !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  text-indent: 0 !important;
+  overflow: visible !important;
+}
+
+button.chromusic-visualize-btn:hover {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.22), rgba(52, 152, 219, 0.15)) !important;
+  border-color: rgba(155, 89, 182, 0.5) !important;
+  color: #dbb8f0 !important;
+  box-shadow: 0 2px 8px rgba(155, 89, 182, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+button.chromusic-visualize-btn:active {
+  transform: scale(0.97) translateY(0) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Pulse animation on first appearance */
+@keyframes chromusic-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.4); }
+  70%  { box-shadow: 0 0 0 8px rgba(155, 89, 182, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(155, 89, 182, 0); }
+}
+
+button.chromusic-visualize-btn {
+  animation: chromusic-pulse 1.5s ease-out 0.5s 2 !important;
+}
+
+button.chromusic-floating-btn {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 24px !important;
+  z-index: 2147483647 !important;
+  padding: 10px 16px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+button.chromusic-floating-btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* ── Dark-mode adjustments for specific sites ── */
+
+/* ChatGPT dark background */
+[data-theme="dark"] button.chromusic-visualize-btn,
+.dark button.chromusic-visualize-btn,
+html[class*="dark"] button.chromusic-visualize-btn {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.18), rgba(52, 152, 219, 0.1)) !important;
+}
+
+/* Light mode */
+[data-theme="light"] button.chromusic-visualize-btn,
+html:not([class*="dark"]) button.chromusic-visualize-btn {
+  color: #7c3aed !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(59, 130, 246, 0.05)) !important;
+}
